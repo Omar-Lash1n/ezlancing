@@ -1,0 +1,87 @@
+<section id="risk-score" class="py-24 relative overflow-hidden" #riskSection>
+  <div class="section-container">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(245,158,11,0.12)' : 'rgba(245,158,11,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(245,158,11,0.3)' : 'rgba(245,158,11,0.2)'"
+           [style.color]="'#F59E0B'">
+        {{ lang.t('RISK_SCORE.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('RISK_SCORE.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('RISK_SCORE.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+      <p appScrollReveal class="text-lg leading-relaxed"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('RISK_SCORE.SUBTITLE') }}
+      </p>
+    </div>
+
+    <!-- Demo Card -->
+    <div appScrollReveal class="max-w-4xl mx-auto">
+      <div class="rounded-3xl border p-8 sm:p-12"
+           [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark' : 'bg-white border-border-light'"
+           [style.backdropFilter]="'blur(10px)'">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Left: Score Circle -->
+          <div class="flex flex-col items-center">
+            <div class="relative w-40 h-40 mb-6">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="54" fill="none"
+                        [attr.stroke]="theme.isDark() ? '#2D2D44' : '#E5E7EB'" stroke-width="8"/>
+                <circle cx="60" cy="60" r="54" fill="none"
+                        [attr.stroke]="getScoreColor()" stroke-width="8"
+                        stroke-linecap="round"
+                        [attr.stroke-dasharray]="getCircumference()"
+                        [attr.stroke-dashoffset]="getStrokeDashoffset()"
+                        style="transition: stroke-dashoffset 0.1s ease;"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-4xl font-extrabold" [style.color]="getScoreColor()">{{ score() }}</span>
+                <span class="text-xs font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">/100</span>
+              </div>
+            </div>
+            <p class="text-sm font-semibold" [style.color]="getScoreColor()">
+              {{ lang.t('RISK_SCORE.SCORE_LABEL') }}
+            </p>
+          </div>
+
+          <!-- Right: Flags -->
+          <div class="space-y-4">
+            <!-- Red Flags -->
+            <div class="flex items-start gap-3 p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-red-500/5 border-red-500/20' : 'bg-red-50 border-red-200'">
+              <svg class="flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="text-sm" [style.color]="theme.isDark() ? '#FCA5A5' : '#DC2626'">{{ lang.t('RISK_SCORE.FLAG1') }}</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-red-500/5 border-red-500/20' : 'bg-red-50 border-red-200'">
+              <svg class="flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="text-sm" [style.color]="theme.isDark() ? '#FCA5A5' : '#DC2626'">{{ lang.t('RISK_SCORE.FLAG2') }}</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-amber-500/5 border-amber-500/20' : 'bg-amber-50 border-amber-200'">
+              <svg class="flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="text-sm" [style.color]="theme.isDark() ? '#FCD34D' : '#D97706'">{{ lang.t('RISK_SCORE.FLAG3') }}</span>
+            </div>
+            <div class="flex items-start gap-3 p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-amber-500/5 border-amber-500/20' : 'bg-amber-50 border-amber-200'">
+              <svg class="flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="text-sm" [style.color]="theme.isDark() ? '#FCD34D' : '#D97706'">{{ lang.t('RISK_SCORE.FLAG4') }}</span>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="mt-6 p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-primary/5 border-primary/20' : 'bg-primary/5 border-primary/20'">
+              <p class="text-xs font-semibold text-primary mb-1">{{ lang.t('RISK_SCORE.RECOMMENDATION') }}</p>
+              <p class="text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">{{ lang.t('RISK_SCORE.REC_TEXT') }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

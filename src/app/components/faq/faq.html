@@ -1,0 +1,49 @@
+<section id="faq" class="py-24 relative overflow-hidden">
+  <div class="section-container" style="max-width: 768px;">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(108,60,233,0.15)' : 'rgba(108,60,233,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)'"
+           [style.color]="'#8B5CF6'">
+        {{ lang.t('FAQ.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('FAQ.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('FAQ.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+      @for (faq of faqs; track faq; let i = $index) {
+        <div appScrollReveal [revealDelay]="(i * 0.05) + 's'"
+             class="rounded-2xl border overflow-hidden transition-all duration-300"
+             [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark' : 'bg-white border-border-light'">
+          <button (click)="toggle(i)"
+                  class="w-full flex items-center justify-between px-6 py-5 text-left transition-colors duration-200"
+                  [class]="lang.isRtl() ? 'text-right' : 'text-left'">
+            <span class="font-semibold pr-4" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+              {{ lang.t('FAQ.Q' + faq) }}
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 class="flex-shrink-0 transition-transform duration-300"
+                 [class]="openIndex() === i ? 'rotate-180' : ''"
+                 [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          @if (openIndex() === i) {
+            <div class="px-6 pb-5" style="animation: slide-up 0.3s ease forwards;">
+              <p class="text-sm leading-relaxed" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+                {{ lang.t('FAQ.A' + faq) }}
+              </p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

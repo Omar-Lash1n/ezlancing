@@ -1,0 +1,70 @@
+<section id="features" class="py-24 relative overflow-hidden">
+  <div class="orb w-[400px] h-[400px] bg-accent top-[20%] right-[-150px]" style="animation: float 10s ease-in-out infinite;"></div>
+
+  <div class="section-container">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(108,60,233,0.15)' : 'rgba(108,60,233,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)'"
+           [style.color]="'#8B5CF6'">
+        {{ lang.t('FEATURES.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('FEATURES.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('FEATURES.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+      <p appScrollReveal class="text-lg leading-relaxed"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('FEATURES.SUBTITLE') }}
+      </p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (feature of features; track feature.key; let i = $index) {
+        <div appScrollReveal [revealDelay]="(i * 0.08) + 's'"
+             class="group relative p-8 rounded-2xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-xl cursor-default"
+             [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark hover:border-primary/40' : 'bg-white border-border-light hover:border-primary/30'"
+             [style.backdropFilter]="'blur(10px)'">
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
+               [class]="feature.gradient">
+            @switch (feature.icon) {
+              @case ('contract') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              }
+              @case ('tracking') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              }
+              @case ('risk') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              }
+              @case ('flag') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              }
+              @case ('milestone') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              }
+              @case ('dispute') {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              }
+            }
+          </div>
+          <!-- Text -->
+          <h3 class="text-xl font-bold mb-3" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+            {{ lang.t('FEATURES.' + feature.key + '_TITLE') }}
+          </h3>
+          <p class="text-sm leading-relaxed" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            {{ lang.t('FEATURES.' + feature.key + '_DESC') }}
+          </p>
+          <!-- Hover gradient overlay -->
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+               [class]="feature.gradient"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

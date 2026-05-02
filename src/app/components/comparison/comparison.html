@@ -1,0 +1,104 @@
+<section id="comparison" class="py-24 relative overflow-hidden">
+  <div class="section-container">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(108,60,233,0.15)' : 'rgba(108,60,233,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)'"
+           [style.color]="'#8B5CF6'">
+        {{ lang.t('COMPARISON.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('COMPARISON.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('COMPARISON.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+      <p appScrollReveal class="text-lg leading-relaxed"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('COMPARISON.SUBTITLE') }}
+      </p>
+    </div>
+
+    <!-- Table -->
+    <div appScrollReveal class="overflow-x-auto rounded-2xl border"
+         [class]="theme.isDark() ? 'border-border-dark' : 'border-border-light'">
+      <table class="w-full text-sm">
+        <thead>
+          <tr [class]="theme.isDark() ? 'bg-surface-dark' : 'bg-bg-light'">
+            <th class="text-left px-6 py-4 font-semibold" [class]="lang.isRtl() ? 'text-right' : 'text-left'"
+                [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">{{ lang.t('COMPARISON.FEATURE') }}</th>
+            <th class="px-4 py-4 text-center font-bold text-primary">ezLancing</th>
+            <th class="px-4 py-4 text-center font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">Bonsai</th>
+            <th class="px-4 py-4 text-center font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">HoneyBook</th>
+            <th class="px-4 py-4 text-center font-medium hidden sm:table-cell" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">DocuSign</th>
+            <th class="px-4 py-4 text-center font-medium hidden sm:table-cell" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">Wave</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows; track row.key; let i = $index) {
+            <tr class="border-t transition-colors duration-200"
+                [class]="theme.isDark() ? 'border-border-dark hover:bg-primary/5' : 'border-border-light hover:bg-primary/5'">
+              <td class="px-6 py-4 font-medium" [class]="lang.isRtl() ? 'text-right' : 'text-left'"
+                  [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+                {{ lang.t('COMPARISON.' + row.key) }}
+              </td>
+              <td class="px-4 py-4 text-center">
+                @if (row.ez === true) {
+                  <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-accent/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                }
+              </td>
+              <td class="px-4 py-4 text-center">
+                @if (row.bonsai === true) {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                } @else if (row.bonsai === 'partial') {
+                  <span class="text-xs text-warning font-medium">{{ lang.t('COMPARISON.PARTIAL') }}</span>
+                } @else {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                }
+              </td>
+              <td class="px-4 py-4 text-center">
+                @if (row.honey === true) {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                } @else if (row.honey === 'partial') {
+                  <span class="text-xs text-warning font-medium">{{ lang.t('COMPARISON.PARTIAL') }}</span>
+                } @else {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                }
+              </td>
+              <td class="px-4 py-4 text-center hidden sm:table-cell">
+                @if (row.docu === true) {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                } @else {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                }
+              </td>
+              <td class="px-4 py-4 text-center hidden sm:table-cell">
+                @if (row.wave === true) {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                } @else if (row.wave === 'partial') {
+                  <span class="text-xs text-warning font-medium">{{ lang.t('COMPARISON.PARTIAL') }}</span>
+                } @else {
+                  <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                }
+              </td>
+            </tr>
+          }
+          <!-- Price Row -->
+          <tr class="border-t font-bold"
+              [class]="theme.isDark() ? 'border-border-dark bg-primary/5' : 'border-border-light bg-primary/5'">
+            <td class="px-6 py-4" [class]="lang.isRtl() ? 'text-right' : 'text-left'"
+                [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">{{ lang.t('COMPARISON.PRICE') }}</td>
+            <td class="px-4 py-4 text-center text-accent font-extrabold">$9</td>
+            <td class="px-4 py-4 text-center" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">$25</td>
+            <td class="px-4 py-4 text-center" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">$19</td>
+            <td class="px-4 py-4 text-center hidden sm:table-cell" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">$15</td>
+            <td class="px-4 py-4 text-center hidden sm:table-cell" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">{{ lang.t('COMPARISON.FREE') }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+

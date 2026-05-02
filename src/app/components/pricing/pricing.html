@@ -1,0 +1,221 @@
+<section id="pricing" class="py-24 relative overflow-hidden">
+  <div class="orb w-[500px] h-[500px] bg-accent top-[-200px] right-[-200px]" style="animation: float 14s ease-in-out infinite;"></div>
+  <div class="orb w-[300px] h-[300px] bg-primary bottom-[-100px] left-[-100px]" style="animation: float-slow 10s ease-in-out infinite;"></div>
+
+  <div class="section-container">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(108,60,233,0.15)' : 'rgba(108,60,233,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)'"
+           [style.color]="'#8B5CF6'">
+        {{ lang.t('PRICING.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('PRICING.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('PRICING.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+      <p appScrollReveal class="text-lg leading-relaxed"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('PRICING.SUBTITLE') }}
+      </p>
+    </div>
+
+    <!-- Toggle -->
+    <div appScrollReveal class="flex items-center justify-center gap-4 mb-16">
+      <span class="text-sm font-medium" [style.color]="!isAnnual() ? (theme.isDark() ? '#F8FAFC' : '#1A1A2E') : (theme.isDark() ? '#94A3B8' : '#6B7280')">
+        {{ lang.t('PRICING.MONTHLY') }}
+      </span>
+      <button (click)="isAnnual.update(v => !v)"
+              class="relative w-14 h-7 rounded-full transition-colors duration-300"
+              [class]="isAnnual() ? 'bg-primary' : (theme.isDark() ? 'bg-border-dark' : 'bg-border-light')">
+        <div class="absolute top-0.5 w-6 h-6 rounded-full bg-white shadow-md transition-transform duration-300"
+             [style.transform]="isAnnual() ? 'translateX(30px)' : 'translateX(2px)'">
+        </div>
+      </button>
+      <span class="text-sm font-medium" [style.color]="isAnnual() ? (theme.isDark() ? '#F8FAFC' : '#1A1A2E') : (theme.isDark() ? '#94A3B8' : '#6B7280')">
+        {{ lang.t('PRICING.ANNUAL') }}
+      </span>
+      <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-accent/20 text-accent">
+        {{ lang.t('PRICING.SAVE') }}
+      </span>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+      <!-- Plan 1: Solo Monthly -->
+      <div appScrollReveal [revealDelay]="'0s'"
+           class="rounded-2xl border p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl relative"
+           [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark' : 'bg-white border-border-light'">
+        <h3 class="text-lg font-bold mb-2" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('PRICING.PLAN1_NAME') }}
+        </h3>
+        <p class="text-sm mb-6" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('PRICING.PLAN1_DESC') }}
+        </p>
+        <div class="mb-6">
+          <span class="text-4xl font-extrabold" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">$9</span>
+          <span class="text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">{{ lang.t('PRICING.PER_MONTH') }}</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN1_F1') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN1_F2') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN1_F3') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN1_F4') }}
+          </li>
+        </ul>
+        <button class="w-full py-3.5 px-6 rounded-xl font-semibold text-base border-2 transition-all duration-300 hover:bg-primary hover:border-primary hover:text-white"
+                [class]="theme.isDark() ? 'border-border-dark text-text-dark' : 'border-border-light text-text-light'">
+          {{ lang.t('PRICING.CTA') }}
+        </button>
+      </div>
+
+      <!-- Plan 2: Solo Annual (Popular) -->
+      <div appScrollReveal [revealDelay]="'0.08s'"
+           class="rounded-2xl p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl relative border-2 border-primary shadow-lg shadow-primary/10"
+           [class]="theme.isDark() ? 'bg-surface-dark/80' : 'bg-white'">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-white text-xs font-bold">
+          {{ lang.t('PRICING.POPULAR') }}
+        </div>
+        <h3 class="text-lg font-bold mb-2" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('PRICING.PLAN2_NAME') }}
+        </h3>
+        <p class="text-sm mb-6" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('PRICING.PLAN2_DESC') }}
+        </p>
+        <div class="mb-6">
+          <span class="text-4xl font-extrabold" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">$79</span>
+          <span class="text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">{{ lang.t('PRICING.PER_YEAR') }}</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN2_F1') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN2_F2') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN2_F3') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN2_F4') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN2_F5') }}
+          </li>
+        </ul>
+        <button class="w-full py-3.5 px-6 rounded-xl font-semibold text-base bg-gradient-to-r from-primary to-primary-light text-white transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5">
+          {{ lang.t('PRICING.CTA_POPULAR') }}
+        </button>
+      </div>
+
+      <!-- Plan 3: Pro Annual -->
+      <div appScrollReveal [revealDelay]="'0.16s'"
+           class="rounded-2xl border p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl relative"
+           [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark' : 'bg-white border-border-light'">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-white text-xs font-bold">
+          {{ lang.t('PRICING.BEST_VALUE') }}
+        </div>
+        <h3 class="text-lg font-bold mb-2" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('PRICING.PLAN3_NAME') }}
+        </h3>
+        <p class="text-sm mb-6" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('PRICING.PLAN3_DESC') }}
+        </p>
+        <div class="mb-6">
+          <span class="text-4xl font-extrabold" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">$129</span>
+          <span class="text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">{{ lang.t('PRICING.PER_YEAR') }}</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F1') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F2') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F3') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F4') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F5') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN3_F6') }}
+          </li>
+        </ul>
+        <button class="w-full py-3.5 px-6 rounded-xl font-semibold text-base border-2 border-accent text-accent transition-all duration-300 hover:bg-accent hover:text-white hover:-translate-y-0.5">
+          {{ lang.t('PRICING.CTA') }}
+        </button>
+      </div>
+
+      <!-- Plan 4: One-Time -->
+      <div appScrollReveal [revealDelay]="'0.24s'"
+           class="rounded-2xl border p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl relative"
+           [class]="theme.isDark() ? 'bg-surface-dark/60 border-border-dark' : 'bg-white border-border-light'">
+        <h3 class="text-lg font-bold mb-2" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('PRICING.PLAN4_NAME') }}
+        </h3>
+        <p class="text-sm mb-6" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('PRICING.PLAN4_DESC') }}
+        </p>
+        <div class="mb-6">
+          <span class="text-4xl font-extrabold" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">$49</span>
+          <span class="text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'"> {{ lang.t('PRICING.LIFETIME') }}</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN4_F1') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN4_F2') }}
+          </li>
+          <li class="flex items-center gap-2 text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ lang.t('PRICING.PLAN4_F3') }}
+          </li>
+        </ul>
+        <button class="w-full py-3.5 px-6 rounded-xl font-semibold text-base border-2 transition-all duration-300 hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-0.5"
+                [class]="theme.isDark() ? 'border-border-dark text-text-dark' : 'border-border-light text-text-light'">
+          {{ lang.t('PRICING.CTA') }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Guarantee -->
+    <div appScrollReveal class="text-center mt-12">
+      <p class="text-sm flex items-center justify-center gap-2" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        {{ lang.t('PRICING.GUARANTEE') }}
+      </p>
+    </div>
+  </div>
+</section>
+

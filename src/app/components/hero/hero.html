@@ -1,0 +1,127 @@
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  <!-- Background Orbs -->
+  <div class="orb w-[600px] h-[600px] bg-primary top-[-200px] right-[-200px]" style="animation: float-slow 8s ease-in-out infinite;"></div>
+  <div class="orb w-[400px] h-[400px] bg-accent bottom-[-100px] left-[-100px]" style="animation: float-slow 10s ease-in-out infinite 2s;"></div>
+  <div class="orb w-[300px] h-[300px] bg-primary-light top-[40%] left-[50%]" style="animation: float 12s ease-in-out infinite 4s;"></div>
+
+  <!-- Grid Pattern -->
+  <div class="absolute inset-0 opacity-[0.03]"
+       [class]="theme.isDark() ? 'opacity-[0.05]' : 'opacity-[0.03]'"
+       style="background-image: radial-gradient(circle, currentColor 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
+
+  <div class="section-container relative z-10">
+    <div class="text-center max-w-4xl mx-auto">
+      <!-- Badge -->
+      <div [class]="'inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 border transition-all duration-700 ' + (loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')"
+           [style.background]="theme.isDark() ? 'rgba(108,60,233,0.15)' : 'rgba(108,60,233,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)'"
+           [style.color]="'#8B5CF6'">
+        <span class="w-2 h-2 rounded-full bg-accent" style="animation: pulse-glow 2s ease-in-out infinite;"></span>
+        {{ lang.t('HERO.BADGE') }}
+      </div>
+
+      <!-- Main Heading -->
+      <h1 [class]="'text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 transition-all duration-700 delay-200 ' + (loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('HERO.TITLE_1') }}
+        <span class="gradient-text"> {{ lang.t('HERO.TITLE_HIGHLIGHT') }} </span>
+        <br>{{ lang.t('HERO.TITLE_2') }}
+      </h1>
+
+      <!-- Subtitle -->
+      <p [class]="'text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-700 delay-400 ' + (loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('HERO.SUBTITLE') }}
+      </p>
+
+      <!-- CTA Buttons -->
+      <div [class]="'flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-700 delay-500 ' + (loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8')">
+        <button (click)="scrollTo('pricing')"
+                class="group px-8 py-4 bg-gradient-to-r from-primary to-primary-light text-white text-lg font-semibold rounded-2xl hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 flex items-center gap-2">
+          {{ lang.t('HERO.CTA_PRIMARY') }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" [class]="lang.isRtl() ? 'rotate-180' : ''"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <button (click)="scrollTo('how-it-works')"
+                class="px-8 py-4 text-lg font-semibold rounded-2xl border-2 transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
+                [class]="theme.isDark() ? 'border-border-dark text-text-dark hover:border-primary hover:text-primary' : 'border-border-light text-text-light hover:border-primary hover:text-primary'">
+          {{ lang.t('HERO.CTA_SECONDARY') }}
+        </button>
+      </div>
+
+      <!-- Hero Visual: Contract Preview Mock -->
+      <div [class]="'relative mx-auto max-w-3xl transition-all duration-1000 delay-700 ' + (loaded() ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12')">
+        <div class="rounded-2xl border p-6 sm:p-8"
+             [class]="theme.isDark() ? 'bg-surface-dark/80 border-border-dark' : 'bg-white/80 border-border-light'"
+             style="backdrop-filter: blur(20px);">
+          <!-- Mock Browser Bar -->
+          <div class="flex items-center gap-2 mb-6">
+            <div class="w-3 h-3 rounded-full bg-danger"></div>
+            <div class="w-3 h-3 rounded-full bg-warning"></div>
+            <div class="w-3 h-3 rounded-full bg-accent"></div>
+            <div class="flex-1 mx-4 h-8 rounded-lg flex items-center px-3"
+                 [class]="theme.isDark() ? 'bg-bg-dark' : 'bg-bg-light'">
+              <span class="text-xs font-mono" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">ezlancing.com/contracts/new</span>
+            </div>
+          </div>
+
+          <!-- Mock Content -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm">ez</div>
+              <div>
+                <div class="h-4 w-48 rounded"
+                     [class]="theme.isDark() ? 'bg-border-dark' : 'bg-border-light'"
+                     style="animation: shimmer 2s ease-in-out infinite; background-size: 200% 100%; background-image: linear-gradient(90deg, transparent 0%, rgba(108,60,233,0.1) 50%, transparent 100%);">
+                </div>
+                <div class="h-3 w-32 rounded mt-2"
+                     [class]="theme.isDark() ? 'bg-border-dark' : 'bg-border-light'">
+                </div>
+              </div>
+            </div>
+
+            <!-- Typing animation area -->
+            <div class="p-4 rounded-xl border"
+                 [class]="theme.isDark() ? 'bg-bg-dark border-border-dark' : 'bg-bg-light border-border-light'">
+              <p class="font-mono text-sm" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+                <span style="animation: typing 3s steps(40) 1s forwards; overflow: hidden; white-space: nowrap; display: inline-block; max-width: 100%;">"Build a responsive e-commerce website with React..."</span>
+                <span class="inline-block w-0.5 h-4 bg-primary ml-1" style="animation: blink 1s step-end infinite;"></span>
+              </p>
+            </div>
+
+            <!-- AI Response Preview -->
+            <div class="flex items-start gap-3 p-4 rounded-xl border border-accent/20 bg-accent/5">
+              <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06D6A0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="flex-1 space-y-2">
+                <div class="h-3 rounded w-full" [class]="theme.isDark() ? 'bg-accent/10' : 'bg-accent/10'" style="animation: shimmer 2s ease-in-out infinite 0.5s; background-size: 200% 100%; background-image: linear-gradient(90deg, rgba(6,214,160,0.05) 0%, rgba(6,214,160,0.15) 50%, rgba(6,214,160,0.05) 100%);"></div>
+                <div class="h-3 rounded w-3/4" [class]="theme.isDark() ? 'bg-accent/10' : 'bg-accent/10'"></div>
+                <div class="h-3 rounded w-1/2" [class]="theme.isDark() ? 'bg-accent/10' : 'bg-accent/10'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating badges -->
+        <div class="absolute -top-4 -right-4 sm:top-4 sm:right-4 lg:-right-6 px-4 py-2 rounded-xl text-sm font-semibold shadow-lg border"
+             [class]="theme.isDark() ? 'bg-surface-dark border-border-dark text-accent' : 'bg-white border-border-light text-accent'"
+             style="animation: bounce-subtle 3s ease-in-out infinite;">
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            AI Protected
+          </span>
+        </div>
+        <div class="absolute -bottom-4 -left-4 sm:bottom-4 sm:left-4 lg:-left-6 px-4 py-2 rounded-xl text-sm font-semibold shadow-lg border"
+             [class]="theme.isDark() ? 'bg-surface-dark border-border-dark text-primary-light' : 'bg-white border-border-light text-primary'"
+             style="animation: bounce-subtle 3s ease-in-out infinite 1.5s;">
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Contract Ready
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

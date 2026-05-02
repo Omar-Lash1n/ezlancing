@@ -1,0 +1,47 @@
+<section class="py-20 relative overflow-hidden">
+  <div class="section-container">
+    <p appScrollReveal class="text-center text-sm font-medium mb-12 tracking-wider uppercase"
+       [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+      {{ lang.t('SOCIAL_PROOF.TITLE') }}
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Stat 1 -->
+      <div appScrollReveal [revealDelay]="'0.05s'" class="text-center group">
+        <div class="text-3xl sm:text-4xl font-extrabold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+          {{ lang.t('SOCIAL_PROOF.STAT1_VALUE') }}
+        </div>
+        <div class="text-sm font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('SOCIAL_PROOF.STAT1_LABEL') }}
+        </div>
+      </div>
+      <!-- Stat 2 -->
+      <div appScrollReveal [revealDelay]="'0.1s'" class="text-center group">
+        <div class="text-3xl sm:text-4xl font-extrabold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+          {{ lang.t('SOCIAL_PROOF.STAT2_VALUE') }}
+        </div>
+        <div class="text-sm font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('SOCIAL_PROOF.STAT2_LABEL') }}
+        </div>
+      </div>
+      <!-- Stat 3 -->
+      <div appScrollReveal [revealDelay]="'0.15s'" class="text-center group">
+        <div class="text-3xl sm:text-4xl font-extrabold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+          {{ lang.t('SOCIAL_PROOF.STAT3_VALUE') }}
+        </div>
+        <div class="text-sm font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('SOCIAL_PROOF.STAT3_LABEL') }}
+        </div>
+      </div>
+      <!-- Stat 4 -->
+      <div appScrollReveal [revealDelay]="'0.2s'" class="text-center group">
+        <div class="text-3xl sm:text-4xl font-extrabold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+          {{ lang.t('SOCIAL_PROOF.STAT4_VALUE') }}
+        </div>
+        <div class="text-sm font-medium" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('SOCIAL_PROOF.STAT4_LABEL') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

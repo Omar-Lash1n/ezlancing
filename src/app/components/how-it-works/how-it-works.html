@@ -1,0 +1,72 @@
+<section id="how-it-works" class="py-24 relative overflow-hidden">
+  <div class="orb w-[500px] h-[500px] bg-primary-light bottom-[-200px] left-[-200px]" style="animation: float-slow 12s ease-in-out infinite;"></div>
+
+  <div class="section-container">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div appScrollReveal class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 border"
+           [style.background]="theme.isDark() ? 'rgba(6,214,160,0.12)' : 'rgba(6,214,160,0.08)'"
+           [style.borderColor]="theme.isDark() ? 'rgba(6,214,160,0.3)' : 'rgba(6,214,160,0.2)'"
+           [style.color]="'#06D6A0'">
+        {{ lang.t('HOW_IT_WORKS.BADGE') }}
+      </div>
+      <h2 appScrollReveal class="text-4xl sm:text-5xl font-extrabold mb-6"
+          [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+        {{ lang.t('HOW_IT_WORKS.TITLE') }}
+        <span class="gradient-text"> {{ lang.t('HOW_IT_WORKS.TITLE_HIGHLIGHT') }}</span>
+      </h2>
+      <p appScrollReveal class="text-lg leading-relaxed"
+         [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+        {{ lang.t('HOW_IT_WORKS.SUBTITLE') }}
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+      <!-- Connection Line (desktop) -->
+      <div class="hidden md:block absolute top-24 left-[16.66%] right-[16.66%] h-0.5"
+           [style.background]="'linear-gradient(90deg, ' + (theme.isDark() ? 'rgba(108,60,233,0.3)' : 'rgba(108,60,233,0.2)') + ', ' + (theme.isDark() ? 'rgba(6,214,160,0.3)' : 'rgba(6,214,160,0.2)') + ')'">
+      </div>
+
+      <!-- Step 1 -->
+      <div appScrollReveal [revealDelay]="'0s'" class="text-center relative">
+        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white text-2xl font-extrabold shadow-lg shadow-primary/20 hover:scale-110 transition-transform duration-500">
+          01
+        </div>
+        <h3 class="text-xl font-bold mb-3" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('HOW_IT_WORKS.STEP1_TITLE') }}
+        </h3>
+        <p class="text-sm leading-relaxed max-w-xs mx-auto" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('HOW_IT_WORKS.STEP1_DESC') }}
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div appScrollReveal [revealDelay]="'0.15s'" class="text-center relative">
+        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center text-white text-2xl font-extrabold shadow-lg shadow-accent/20 hover:scale-110 transition-transform duration-500">
+          02
+        </div>
+        <h3 class="text-xl font-bold mb-3" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('HOW_IT_WORKS.STEP2_TITLE') }}
+        </h3>
+        <p class="text-sm leading-relaxed max-w-xs mx-auto" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('HOW_IT_WORKS.STEP2_DESC') }}
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div appScrollReveal [revealDelay]="'0.3s'" class="text-center relative">
+        <div class="w-20 h-20 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-primary-light to-accent flex items-center justify-center text-white text-2xl font-extrabold shadow-lg shadow-primary-light/20 hover:scale-110 transition-transform duration-500">
+          03
+        </div>
+        <h3 class="text-xl font-bold mb-3" [style.color]="theme.isDark() ? '#F8FAFC' : '#1A1A2E'">
+          {{ lang.t('HOW_IT_WORKS.STEP3_TITLE') }}
+        </h3>
+        <p class="text-sm leading-relaxed max-w-xs mx-auto" [style.color]="theme.isDark() ? '#94A3B8' : '#6B7280'">
+          {{ lang.t('HOW_IT_WORKS.STEP3_DESC') }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
